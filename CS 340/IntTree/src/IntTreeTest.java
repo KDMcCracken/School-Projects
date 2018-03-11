@@ -1,6 +1,5 @@
 import org.junit.Assert;
 import org.junit.Test;
-
 import javax.xml.soap.Node;
 
 import static org.junit.Assert.*;
@@ -18,31 +17,31 @@ public class IntTreeTest {
         int[] thirdArray = {4,8,9,10,11};
         IntTree thirdChild = new IntTree(thirdArray);
         IntTree finalTree = new IntTree(1,new IntTree[]{firstChild,secondChild,thirdChild});
-        System.out.println("PreOrder: " + firstChild.preorder());
+        System.out.println("PreOrder: " + finalTree.preorder());
     }
 
     @Test
     public void postorder() throws Exception {
         int[] firstArray = {2,5,6};
         IntTree firstChild = new IntTree(firstArray);
-//        int[] secondArray = {7,12,13};
-//        IntTree secondChild = new IntTree(3,new IntTree[]{new IntTree(secondArray)});
-//        int[] thirdArray = {4,8,9,10,11};
-//        IntTree thirdChild = new IntTree(thirdArray);
-//        IntTree finalTree = new IntTree(1,new IntTree[]{firstChild,secondChild,thirdChild});
-        System.out.println("PostOrder: " + firstChild.postorder());
+        int[] secondArray = {7,12,13};
+        IntTree secondChild = new IntTree(3,new IntTree[]{new IntTree(secondArray)});
+        int[] thirdArray = {4,8,9,10,11};
+        IntTree thirdChild = new IntTree(thirdArray);
+        IntTree finalTree = new IntTree(1,new IntTree[]{firstChild,secondChild,thirdChild});
+        System.out.println("PostOrder: " + finalTree.postorder());
     }
 
     @Test
     public void levelorder() throws Exception {
         int[] firstArray = {2,5,6};
         IntTree firstChild = new IntTree(firstArray);
-//        int[] secondArray = {7,12,13};
-//        IntTree secondChild = new IntTree(3,new IntTree[]{new IntTree(secondArray)});
-//        int[] thirdArray = {4,8,9,10,11};
-//        IntTree thirdChild = new IntTree(thirdArray);
-//        IntTree finalTree = new IntTree(1,new IntTree[]{firstChild,secondChild,thirdChild});
-        System.out.println("LevelOrder: " + firstChild.levelorder());
+        int[] secondArray = {7,12,13};
+        IntTree secondChild = new IntTree(3,new IntTree[]{new IntTree(secondArray)});
+        int[] thirdArray = {4,8,9,10,11};
+        IntTree thirdChild = new IntTree(thirdArray);
+        IntTree finalTree = new IntTree(1,new IntTree[]{firstChild,secondChild,thirdChild});
+        System.out.println("LevelOrder: " + finalTree.levelorder());
     }
 
     @Test
