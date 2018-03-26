@@ -1,6 +1,4 @@
-import java.util.Iterator;
-import java.util.PriorityQueue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by Kenan on 3/12/2018.
@@ -24,6 +22,7 @@ public class HuffmanTree {
 
     private Node root;
     private Node current; //this value is changed by the move methods
+    String[] encodings = new String[128];
 
     public HuffmanTree() {
         root = null;
@@ -95,15 +94,28 @@ public class HuffmanTree {
         return this.current.data;
     }
 
+    public void createEncodings(Node r, String s){
+        if(r.data == (char)128){
+            createEncodings(r.left, s + '0');
+            createEncodings(r.right, s + '1');
+        }
+        else{
+            encodings[r.data] = s + r.data;
+        }
+    }
+
     //the iterator returns the path (a series of 0s and 1s) to each leaf
     public class PathIterator implements Iterator<String> {
 
-        public PathIterator() {
+        LinkedList<Node> list;
 
+        public PathIterator(){
+            list = new LinkedList<>();
+            list.add(root);
         }
 
         public boolean hasNext() {
-            return atLeaf();
+            return(!list.isEmpty());
         }
 
         public String next() {
@@ -121,7 +133,11 @@ public class HuffmanTree {
         public String toString() {
             //return a post order representation of the tree
             //using the format we discussed in class
-            return "";
+            String postOrder = "";
+            for(int i = 0; i < encodings.length; i++){
+                postOrder += encodings[i];
+            }
+            return postOrder;
         }
     }
 }
