@@ -22,7 +22,6 @@ public class HuffmanTree {
 
     private Node root;
     private Node current; //this value is changed by the move methods
-    String[] encodings = new String[128];
 
     public HuffmanTree() {
         root = null;
@@ -94,24 +93,21 @@ public class HuffmanTree {
         return this.current.data;
     }
 
-    public void createEncodings(Node r, String s){
-        if(r.data == (char)128){
-            createEncodings(r.left, s + '0');
-            createEncodings(r.right, s + '1');
-        }
-        else{
-            encodings[r.data] = s + r.data;
-        }
+
+    public Iterator<String> iterator() {
+        //return a PathIterator object
+        return new PathIterator();
     }
 
     //the iterator returns the path (a series of 0s and 1s) to each leaf
+
     public class PathIterator implements Iterator<String> {
 
-        LinkedList<Node> list;
+        LinkedList<String> list;
 
         public PathIterator(){
             list = new LinkedList<>();
-            list.add(root);
+            fillList(root, "");
         }
 
         public boolean hasNext() {
@@ -119,25 +115,35 @@ public class HuffmanTree {
         }
 
         public String next() {
-            return "";
+            return list.remove();
         }
 
         public void remove() {
             //optional method not implemented
         }
 
-        public Iterator<String> iterator() {
-            //return a PathIterator object
+        private void fillList(Node r, String path){
+            if(r.left == null){
+                list.add(r.data + path);
+            }
+            else{
+                fillList(r.left, path + '0');
+                fillList(r.right, path + '1');
+            }
         }
 
         public String toString() {
             //return a post order representation of the tree
             //using the format we discussed in class
-            String postOrder = "";
-            for(int i = 0; i < encodings.length; i++){
-                postOrder += encodings[i];
-            }
-            return postOrder;
+            return toString(root);
         }
+
+        private String toString(Node r){
+            if(r.left == null){
+                return r.data + "";
+            }
+            return toString(r.left) + toString(r.right) + r.data;
+        }
+
     }
 }

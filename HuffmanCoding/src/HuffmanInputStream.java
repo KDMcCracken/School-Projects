@@ -20,12 +20,10 @@ public class HuffmanInputStream extends BitInputStream {
     }
 
     public String getTree() {
-
         return tree;
     }
 
     public int getTotalChars() {
-
         return totalChars;
     }
 }
