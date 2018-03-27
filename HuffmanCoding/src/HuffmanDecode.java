@@ -19,11 +19,15 @@ public class HuffmanDecode {
         //Add private methods as needed
         stream = new HuffmanInputStream(in);
         tree = new HuffmanTree(stream.getTree(), (char)128);
+
+        System.out.println("String rep: " + stream.getTree());
+        
         int totalChars = stream.getTotalChars();
         writer = new BufferedWriter(new FileWriter(out));
 
         while(charactersRead < totalChars){
             int bit = stream.readBit();
+            System.out.println(tree.current());
             if(tree.atLeaf()){
                 writer.write(tree.current());
                 tree.moveToRoot();

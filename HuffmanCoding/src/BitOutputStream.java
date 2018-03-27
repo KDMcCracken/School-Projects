@@ -10,7 +10,7 @@ public class BitOutputStream {
     //add additional protected variables as needed
     //do not modify the public methods signatures or add public methods
     protected DataOutputStream d;
-    private int ByteSize = 0;
+    private int ByteSize = 8;
     private int bitCount = 0;
     private char[] bits = new char[8];
 
@@ -23,9 +23,9 @@ public class BitOutputStream {
     }
     public void writeBit(char bit) throws IOException {
         //PRE: bit is a '0' or a '1'
-        if(bitCount+1 == ByteSize){
+        if(bitCount == ByteSize){
             bitCount = 0;
-            byte b = Byte.parseByte(new String(bits),2);
+            char b = (char)Integer.parseInt(new String(bits), 2);
             d.write(b);
         }
         else {
@@ -35,7 +35,7 @@ public class BitOutputStream {
     }
     public void close() throws IOException {
         Arrays.fill(bits,bitCount,ByteSize,'0');
-        byte b = Byte.parseByte(new String(bits),2);
+        char b = (char)Integer.parseInt(new String(bits), 2);
         d.write(b);
         d.close();
     }

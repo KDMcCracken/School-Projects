@@ -62,7 +62,9 @@ public class HuffmanEncode {
             for(int i = 0; i < path.length(); i++) {
                 stream.writeBit(path.charAt(i));
             }
+            c = reader.read();
         }
+        stream.close();
     }
 
     //Builds the encodings for all characters

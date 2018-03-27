@@ -32,7 +32,7 @@ public class BitInputStream {
 
     private void fillBitArray() throws IOException {
         int Byte = d.readByte();
-        for(int i = bits.length; i > 0; i--) {
+        for(int i = bits.length-1; i > 0; i--) {
             int bit = Byte % 2; //gets the bit
             bits[i] = bit;
             Byte = Byte / 2; //Moves to next bit

@@ -31,7 +31,6 @@ public class HuffmanTree {
     public HuffmanTree(char d) {
         //makes a single node tree
         this.root = new Node(null,d,null,null);
-        this.current = this.root;
     }
 
     public HuffmanTree(String t, char nonLeaf) {
@@ -47,9 +46,9 @@ public class HuffmanTree {
                     stack.push(new HuffmanTree(character));
                 }
                 else{
-                    HuffmanTree current = new HuffmanTree();
-                    current.root = new Node(stack.pop().root,nonLeaf,stack.pop().root,null);
-                    stack.push(current);
+                    HuffmanTree currentTree = new HuffmanTree(stack.pop(),stack.pop(),nonLeaf);
+                    //current.root = new Node(stack.pop().root,nonLeaf,stack.pop().root,null);
+                    stack.push(currentTree);
                 }
         }
     }
@@ -58,8 +57,10 @@ public class HuffmanTree {
         //makes a new tree where b1 is the left subtree and b2 is the right subtree
         //d is the data in the root
         this.root = new Node(b1.root,d,b2.root,null);
+        this.current = this.root;
         b1.root.parent = this.root;
         b2.root.parent = this.root;
+        System.out.println(this.root);
     }
 
     //use the move methods to traverse the tree
@@ -81,8 +82,8 @@ public class HuffmanTree {
     }
 
     public boolean atLeaf() {
-        //returns true if current references a leave other wise returns false
-        if(this.current.left == null && this.current.right == null) {
+        //returns true if current references a leaf other wise returns false
+        if(current.left == null) {
             return true;
         }
         return false;
