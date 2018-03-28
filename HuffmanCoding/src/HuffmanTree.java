@@ -22,6 +22,7 @@ public class HuffmanTree {
 
     private Node root;
     private Node current; //this value is changed by the move methods
+    private char nonLeaf;
 
     public HuffmanTree() {
         root = null;
@@ -30,7 +31,7 @@ public class HuffmanTree {
 
     public HuffmanTree(char d) {
         //makes a single node tree
-        this.root = new Node(null,d,null,null);
+        root = new Node(null,d,null,null);
     }
 
     public HuffmanTree(String t, char nonLeaf) {
@@ -42,15 +43,17 @@ public class HuffmanTree {
         char[] postOrder = t.toCharArray();
 
         for(char character : postOrder){
-                if(character != nonLeaf){
-                    stack.push(new HuffmanTree(character));
+                if(character == nonLeaf){
+                    stack.push(new HuffmanTree(stack.pop(),stack.pop(),nonLeaf));
                 }
                 else{
-                    HuffmanTree currentTree = new HuffmanTree(stack.pop(),stack.pop(),nonLeaf);
-                    //current.root = new Node(stack.pop().root,nonLeaf,stack.pop().root,null);
-                    stack.push(currentTree);
+                    stack.push(new HuffmanTree(character));
                 }
         }
+        this.nonLeaf = nonLeaf;
+        this.root = stack.pop().root;
+        current = this.root;
+
     }
 
     public HuffmanTree(HuffmanTree b1, HuffmanTree b2, char d) {
@@ -60,7 +63,6 @@ public class HuffmanTree {
         this.current = this.root;
         b1.root.parent = this.root;
         b2.root.parent = this.root;
-        System.out.println(this.root);
     }
 
     //use the move methods to traverse the tree
@@ -83,7 +85,7 @@ public class HuffmanTree {
 
     public boolean atLeaf() {
         //returns true if current references a leaf other wise returns false
-        if(current.left == null) {
+        if(current.data != nonLeaf) {
             return true;
         }
         return false;
@@ -98,6 +100,19 @@ public class HuffmanTree {
     public Iterator<String> iterator() {
         //return a PathIterator object
         return new PathIterator();
+    }
+
+    public String toString() {
+        //return a post order representation of the tree
+        //using the format we discussed in class]
+        return toString(root);
+    }
+
+    private String toString(Node r){
+        if(r == null){
+            return "";
+        }
+        return toString(r.left) + toString(r.right) + r.data;
     }
 
     //the iterator returns the path (a series of 0s and 1s) to each leaf
@@ -131,19 +146,6 @@ public class HuffmanTree {
                 fillList(r.left, path + '0');
                 fillList(r.right, path + '1');
             }
-        }
-
-        public String toString() {
-            //return a post order representation of the tree
-            //using the format we discussed in class
-            return toString(root);
-        }
-
-        private String toString(Node r){
-            if(r.left == null){
-                return r.data + "";
-            }
-            return toString(r.left) + toString(r.right) + r.data;
         }
 
     }

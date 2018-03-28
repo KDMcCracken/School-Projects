@@ -34,7 +34,9 @@ public class HuffmanEncode {
 
         buildHuffmanTree();
 
-        tree = queue.poll().tree;
+        this.tree = queue.poll().tree;
+        System.out.println(tree.toString());
+
         buildEncodings();
         encode(in, out);
     }

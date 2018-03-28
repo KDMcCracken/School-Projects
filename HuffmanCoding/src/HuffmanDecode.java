@@ -20,23 +20,27 @@ public class HuffmanDecode {
         stream = new HuffmanInputStream(in);
         tree = new HuffmanTree(stream.getTree(), (char)128);
 
-        System.out.println("String rep: " + stream.getTree());
-        
+        System.out.println("Tree as string: " + tree.toString());
+
         int totalChars = stream.getTotalChars();
         writer = new BufferedWriter(new FileWriter(out));
 
         while(charactersRead < totalChars){
             int bit = stream.readBit();
-            System.out.println(tree.current());
-            if(tree.atLeaf()){
+            //System.out.println(bit);
+            //System.out.println(tree.current());
+            if(bit == '0'){
+                tree.moveToLeft();
+            }
+            else if(bit == '1'){
+                tree.moveToRight();
+            }
+            else if(tree.atLeaf()){
                 writer.write(tree.current());
                 tree.moveToRoot();
             }
-            else if(bit == '0'){
-                tree.moveToLeft();
-            }
             else{
-                tree.moveToRight();
+                //System.out.println("were gonna have a problem here");
             }
             charactersRead++;
         }
