@@ -31,12 +31,17 @@ public class BitInputStream {
     }
 
     private void fillBitArray() throws IOException {
-        int Byte = d.readByte();
-        System.out.println(Byte);
+        int b = d.readByte();
+        if(b < 0){
+            b *= -1;
+        }
+        System.out.println("Byte: " + b);
+        System.out.println("Length: " + bits.length);
         for(int i = bits.length-1; i > 0; i--) {
-            int bit = Byte % 2; //gets the bit
+            int bit = b % 2; //gets the bit
             bits[i] = bit;
-            Byte = Byte / 2; //Moves to next bit
+            System.out.println("Bit: " + bits[i]);
+            b = b / 2; //Moves to next bit
         }
     }
 

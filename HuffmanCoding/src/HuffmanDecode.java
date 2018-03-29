@@ -20,7 +20,7 @@ public class HuffmanDecode {
         stream = new HuffmanInputStream(in);
         tree = new HuffmanTree(stream.getTree(), (char)128);
 
-        System.out.println("Tree as string: " + tree.toString());
+        //System.out.println("Tree as string: " + tree.toString());
 
         int totalChars = stream.getTotalChars();
         writer = new BufferedWriter(new FileWriter(out));
@@ -29,18 +29,18 @@ public class HuffmanDecode {
             int bit = stream.readBit();
             //System.out.println(bit);
             //System.out.println(tree.current());
-            if(bit == '0'){
-                tree.moveToLeft();
-            }
-            else if(bit == '1'){
-                tree.moveToRight();
-            }
-            else if(tree.atLeaf()){
+            if(tree.atLeaf()){
+                //System.out.println("Called");
                 writer.write(tree.current());
                 tree.moveToRoot();
             }
-            else{
-                //System.out.println("were gonna have a problem here");
+            else if(bit == 0){
+                //System.out.println("moved left");
+                tree.moveToLeft();
+            }
+            else if(bit == 1){
+                //System.out.println("moved right");
+                tree.moveToRight();
             }
             charactersRead++;
         }
