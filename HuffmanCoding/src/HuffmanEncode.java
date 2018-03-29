@@ -56,14 +56,18 @@ public class HuffmanEncode {
     }
 
     private void encode(String in, String out) throws IOException {
+        System.out.println("Encoding..."); //TODO: OMIT
         HuffmanOutputStream stream = new HuffmanOutputStream(out,tree.toString(),totalChars);
         BufferedReader reader = new BufferedReader(new FileReader(in));
         int c = reader.read();
         while(c != -1){
             String path = encodings[c];
+            System.out.println("    " + (char)c + " -> " + path); //TODO: omit
+            System.out.print("        writing: "); //TODO: omit
             for(int i = 0; i < path.length(); i++) {
                 stream.writeBit(path.charAt(i));
             }
+            System.out.println(); //TODO:OMIT
             c = reader.read();
         }
         stream.close();
@@ -71,11 +75,14 @@ public class HuffmanEncode {
 
     //Builds the encodings for all characters
     private void buildEncodings(){
+        System.out.println("Building encodings...");//TODO: omit
         Iterator<String> iterate = tree.iterator();
         while(iterate.hasNext()){
             String characterPath = iterate.next();
             char c = characterPath.charAt(0);
             String path = characterPath.substring(1,characterPath.length()-1);
+
+            System.out.println("    " + c + " -> " + path); //TODO: omit
             encodings[c] = path;
         }
     }

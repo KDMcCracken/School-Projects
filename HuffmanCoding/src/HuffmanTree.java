@@ -53,7 +53,6 @@ public class HuffmanTree {
         this.nonLeaf = nonLeaf;
         this.root = stack.pop().root;
         current = this.root;
-
     }
 
     public HuffmanTree(HuffmanTree b1, HuffmanTree b2, char d) {

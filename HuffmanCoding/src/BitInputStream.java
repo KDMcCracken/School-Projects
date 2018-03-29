@@ -24,25 +24,26 @@ public class BitInputStream {
             fillBitArray();
             bitsRead = 0;
         }
-
         int bit = bits[bitsRead];
+        System.out.print(bit);
         bitsRead++;
         return bit;
     }
 
     private void fillBitArray() throws IOException {
-        int b = d.readByte();
-        if(b < 0){
-            b *= -1;
-        }
-        System.out.println("Byte: " + b);
-        System.out.println("Length: " + bits.length);
-        for(int i = bits.length-1; i > 0; i--) {
+        System.out.println();
+        System.out.print("bitArray: ");
+        int b = d.readUnsignedByte();
+        for(int i = bits.length-1; i >= 0; i--){
             int bit = b % 2; //gets the bit
             bits[i] = bit;
-            System.out.println("Bit: " + bits[i]);
             b = b / 2; //Moves to next bit
         }
+
+        for (int i = 0; i < bits.length; i++){
+            System.out.print(bits[i]);
+        }
+        System.out.println("\n");
     }
 
     public void close() throws IOException {

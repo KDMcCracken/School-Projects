@@ -12,7 +12,7 @@ public class BitOutputStream {
     protected DataOutputStream d;
     private int ByteSize = 8;
     private int bitCount = 0;
-    private char[] bits = new char[8];
+    private int b = 0;
 
     public BitOutputStream(String filename) {
         try {
@@ -23,20 +23,22 @@ public class BitOutputStream {
     }
     public void writeBit(char bit) throws IOException {
         //PRE: bit is a '0' or a '1'
+        int intbit = Integer.parseInt(bit + "");
+        System.out.print(intbit);//TODO: omit
+        b = b * 2 + intbit;
+        bitCount++;
         if(bitCount == ByteSize){
-            bitCount = 0;
-            char b = (char)Integer.parseInt(new String(bits), 2);
             d.write(b);
+            bitCount = 0;
+            b = 0;
         }
-        else {
-            bits[bitCount] = bit;
-            bitCount++;
-        }
+
     }
     public void close() throws IOException {
-        Arrays.fill(bits,bitCount,ByteSize,'0');
-        char b = (char)Integer.parseInt(new String(bits), 2);
-        d.write(b);
+        for (int i = bitCount; i <= 8; i++) {
+            writeBit('0');
+        }
+
         d.close();
     }
 }
