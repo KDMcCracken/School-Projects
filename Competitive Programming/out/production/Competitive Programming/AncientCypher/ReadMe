@@ -1,0 +1,11 @@
+  Objective:
+       Prints "YES" if the input on the first line could be the result
+       of encrypting what is on the second line via a Permutation and Substitution Cypher
+       Otherwise Prints "NO"
+
+  Expected Output for input case:
+    YES
+    NO
+    YES
+    YES
+    NO

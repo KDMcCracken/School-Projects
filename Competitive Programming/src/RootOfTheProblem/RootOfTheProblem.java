@@ -1,4 +1,4 @@
-/**
+package RootOfTheProblem; /**
  * Created by Kenan on 1/31/2018.
  * INCOMPLETE
  */
@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class RootOfTheProblem {
     static private int B, N, A;
     public static void main(String[] args) throws IOException{
-        Scanner scan = new Scanner(new File("test"));
+        Scanner scan = new Scanner(new File("SubstitutionCypherInput"));
         double bestDifference = 0;
         double previousDifference = 17;
         boolean complete = false;

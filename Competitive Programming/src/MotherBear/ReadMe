@@ -1,0 +1,11 @@
+Objective:
+    Determine if the line of input is a palindrome ignoring
+    punctuation and case. If it is a palindrome, output should
+    be "You won't be eaten!" otherwise output is "Uh oh.."
+    End of input is when you reach the word "DONE"
+
+Expected Output for input given:
+    You won't be eaten!
+    You won't be eaten!
+    Uh oh..
+    You won't be eaten!

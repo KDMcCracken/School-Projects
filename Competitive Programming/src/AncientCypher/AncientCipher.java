@@ -1,22 +1,23 @@
+package AncientCypher;
+
 import java.io.File;
 import java.io.IOException;
-import java.security.Key;
 import java.util.*;
 
 /**
  * Created by Kenan on 2/21/2018.
- * INCOMPLETE
+ * ---INCOMPLETE---
  */
 public class AncientCipher {
     public static void main(String args[]) throws IOException{
-        Scanner scan = new Scanner(new File("test"));
+        Scanner scan = new Scanner(new File("src/AncientCypher/AncientCypherInput"));
         while(scan.hasNextLine()) {
             String[] first = scan.nextLine().split("");
             String[] second = scan.nextLine().split("");
             HashMap<String,Integer> firstMap = createMap(first);
             HashMap<String,Integer> secondMap = createMap(second);
 
-            pleaseWork(firstMap,secondMap);
+            check(firstMap,secondMap);
             if(firstMap.isEmpty()){
                 System.out.println("YES");
             }else{
@@ -43,7 +44,7 @@ public class AncientCipher {
         }
     }
 
-    public static void pleaseWork(Map first, Map second) {
+    public static void check(Map first, Map second) {
         Set set = first.entrySet();
         Iterator iterator = set.iterator();
         Set set2 = second.entrySet();

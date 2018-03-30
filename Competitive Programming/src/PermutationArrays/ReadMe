@@ -1,0 +1,12 @@
+Description:
+      -First line of input is number of cases followed by a blank line
+      -Next Line is the index array containing 1,...,n integers
+      -Finally is the numbers to permute
+
+Objective:
+    Re-arrange the order of the second line to follow the ordering in the first line
+
+Expected Output for input given:
+    54.7
+    -2
+    32.0

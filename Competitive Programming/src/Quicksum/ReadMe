@@ -1,0 +1,16 @@
+Description:
+      -Program ends if input is '#'
+
+Objective:
+    Sum the products of each characters positions in the alphabet
+        EX: A = 1, B = 2, etc..
+        ACM : 1*1 + 2*3 + 3*13 = 46
+
+ Expected Output for input case:
+   46
+   650
+   4690
+   49
+   75
+   14
+   15

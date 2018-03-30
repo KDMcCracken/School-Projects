@@ -1,0 +1,13 @@
+Description:
+      -First line is the number of cases
+      -For each case there will be a single line giving the number of votes, V. Following
+      that line will be V lines, each with a single integer
+
+Objective:
+    Tally the votes and determine the most popular number. If there is a tie, choose the
+    smaller number with that many votes
+
+ Expected Output for input case:
+   42
+   7
+   11

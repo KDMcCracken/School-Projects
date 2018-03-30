@@ -1,0 +1,14 @@
+Description:
+      -First line is the number of cases
+      -Each line thereafter has two numbers. The first is V and the second is E
+
+Objective:
+    Find the number of faces in the defined polyhedron
+        Equation: x = V - E + F = 2
+            V represents number of vertices
+            E represents number of edges
+            F represents number of faces
+
+ Expected Output for input case:
+   6
+   4

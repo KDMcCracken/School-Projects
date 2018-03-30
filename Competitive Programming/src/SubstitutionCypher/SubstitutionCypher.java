@@ -7,10 +7,11 @@ import java.util.Scanner;
 
 /**
  * Created by KDMcC on 3/21/2018.
+ * ---INCOMPLETE--- (Assignment was emailed, not on paper)
  */
 public class SubstitutionCypher {
     public static void main(String[] args) throws IOException{
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(new File("src/SubstitutionCypher/SubstitutionCypherInput"));
         int numCases = Integer.parseInt(scan.nextLine());
         scan.nextLine();
         while(numCases > 0){
@@ -43,9 +44,6 @@ public class SubstitutionCypher {
             }
             System.out.println(translated);
 
-            if(numCases > 1){
-                scan.nextLine();
-            }
             numCases--;
         }
     }

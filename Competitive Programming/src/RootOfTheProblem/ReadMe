@@ -1,0 +1,16 @@
+Description:
+      -Program ends if input is 0 0
+
+Objective:
+    Given positive integers B and N, find an integer N such that A^N is as close as possible
+    to B
+
+ Expected Output for input case:
+   1
+   2
+   3
+   4
+   4
+   4
+   5
+   16

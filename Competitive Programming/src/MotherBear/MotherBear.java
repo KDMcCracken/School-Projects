@@ -1,14 +1,16 @@
-/**
- * Created by Kenan on 2/7/2018.
- * COMPLETE
- */
+package MotherBear;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+/**
+ * Created by Kenan on 2/7/2018.
+ * COMPLETE
+ */
 public class MotherBear{
     public static void main(String args[]) throws IOException {
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(new File("src/MotherBear/MotherBearInput"));
         String sentence = scan.nextLine();
         while(!sentence.equals("DONE")){
             String[] input = sentence.split("");

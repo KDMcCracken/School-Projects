@@ -1,3 +1,5 @@
+package FreeSpots;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
@@ -5,11 +7,11 @@ import java.util.Scanner;
 
 /**
  * Created by Kenan on 2/14/2018.
- * COMPLETE
+ * ---COMPLETE---
  */
 public class FreeSpots {
     public static void main(String args[]) throws IOException{
-        Scanner scan = new Scanner(new File("test"));
+        Scanner scan = new Scanner(new File("src/FreeSpots/FreeSpotsInput"));
         int cols = scan.nextInt();
         int rows = scan.nextInt();
         int N = scan.nextInt();

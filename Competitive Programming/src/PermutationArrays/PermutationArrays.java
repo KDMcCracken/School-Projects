@@ -1,3 +1,5 @@
+package PermutationArrays;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
@@ -9,7 +11,7 @@ import java.util.Scanner;
  */
 public class PermutationArrays {
     public static void main(String args[]) throws IOException{
-        Scanner scan = new Scanner(new File("test"));
+        Scanner scan = new Scanner(new File("SubstitutionCypherInput"));
         int cases = scan.nextInt();
         scan.nextLine();
         scan.nextLine();

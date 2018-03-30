@@ -1,3 +1,5 @@
+package Quicksum;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
@@ -9,7 +11,7 @@ import java.util.Scanner;
  * COMPLETE
  */
 public class Quicksum {
-    //static Scanner scan = new Scanner(new File("test.txt"));
+    //static Scanner scan = new Scanner(new File("SubstitutionCypherInput.txt"));
     public static void main(String[] args) throws IOException{
         Scanner scan = new Scanner(System.in);
         String[] array = new String[]{" ","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S",

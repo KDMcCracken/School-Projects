@@ -1,4 +1,4 @@
-/**
+package ProblemN; /**
  * Created by Kenan on 1/24/2018.
  * INCOMPLETE
  */
@@ -9,7 +9,7 @@ import java.util.*;
 public class ProblemN {
     static ArrayList<Integer> voteArray = null;
     public static void main(String[] args) throws IOException {
-        Scanner scan = new Scanner(new File("test"));
+        Scanner scan = new Scanner(new File("SubstitutionCypherInput"));
         int totalCases = scan.nextInt();
         HashMap<Integer, Integer> hm = new HashMap<>();
         int votes = scan.nextInt();
