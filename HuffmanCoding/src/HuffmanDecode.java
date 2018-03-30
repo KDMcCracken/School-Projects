@@ -25,23 +25,19 @@ public class HuffmanDecode {
 
         while(charactersRead < totalChars){
             int bit = stream.readBit();
-            //System.out.println("Designated bit: " + bit);
 
             if(bit == 0){
-                //System.out.println("moved left");
                 tree.moveToLeft();
             }
             else if(bit == 1){
-                //System.out.println("moved right");
                 tree.moveToRight();
             }
 
             if(tree.atLeaf()){
-                //System.out.println("At leaf with data: " + tree.current());
                 writer.write(tree.current());
                 tree.moveToRoot();
+                charactersRead++;
             }
-            charactersRead++;
         }
         writer.close();
     }

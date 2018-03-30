@@ -1,3 +1,4 @@
+import javax.xml.bind.SchemaOutputResolver;
 import java.util.*;
 
 /**
@@ -34,6 +35,7 @@ public class HuffmanTree {
         root = new Node(null,d,null,null);
     }
 
+    //TODO: something wrong, decode recives a different .toString() string
     public HuffmanTree(String t, char nonLeaf) {
         //Assumes t represents a post order representation of the tree as discussed
         //in class
@@ -44,7 +46,9 @@ public class HuffmanTree {
 
         for(char character : postOrder){
                 if(character == nonLeaf){
-                    stack.push(new HuffmanTree(stack.pop(),stack.pop(),nonLeaf));
+                    HuffmanTree left = stack.pop();
+                    HuffmanTree right = stack.pop();
+                    stack.push(new HuffmanTree(right,left,nonLeaf));
                 }
                 else{
                     stack.push(new HuffmanTree(character));

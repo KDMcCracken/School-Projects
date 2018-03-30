@@ -24,7 +24,6 @@ public class BitOutputStream {
     public void writeBit(char bit) throws IOException {
         //PRE: bit is a '0' or a '1'
         int intbit = Integer.parseInt(bit + "");
-        System.out.print(intbit);//TODO: omit
         b = b * 2 + intbit;
         bitCount++;
         if(bitCount == ByteSize){
