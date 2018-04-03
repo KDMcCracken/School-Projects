@@ -27,7 +27,7 @@ public class AVLTree {
             data = d;
             right = r;
             count = 1;
-
+            height = 0;
         }
         private Node(long addr) throws IOException{
             //constructor for a node that exists and is stored in the file
@@ -41,7 +41,8 @@ public class AVLTree {
         private void writeNode(long addr) throws IOException {
             //writes the node to the file at location addr
             f.seek(addr);
-            f.write(this.data);
+            f.writeInt(this.data);
+            // TODO: F.write all aspects of node
         }
     }
 
@@ -54,19 +55,33 @@ public class AVLTree {
         if(mode == CREATE){
             f = new RandomAccessFile(fname,);
         }
-
+        //TODO:
     }
 
     public void insert(int d) throws IOException {
         //insert d into the tree
         //if d is in the tree increment the count field associated with d
+        //TODO:
     }
+
+    private long insert(long root, int d){
+
+    }
+
 
     public int find(int d) throws IOException {
         //if d is in the tree return the value of count associated with d
         //otherwise return 0
+        root = findHelper(root,d);
         return 0;
+        //TODO: Create Node for root address. Look at BinarySearch on website
+        //TODO: Make private method findHelper.
     }
+
+    private Long findHelper(Long root, int d){
+
+    }
+
 
     public void removeOne(int d) throws IOException {
         //remove one copy of d from the tree
