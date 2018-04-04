@@ -33,7 +33,7 @@ public class AVLTree {
             //constructor for a node that exists and is stored in the file
             f.seek(addr);
             data = f.readInt();
-            count = f.readInt()+1;
+            count = f.readInt();
             height = f.readInt();
             left = f.readLong();
             right = f.readLong();
@@ -42,7 +42,10 @@ public class AVLTree {
             //writes the node to the file at location addr
             f.seek(addr);
             f.writeInt(this.data);
-            // TODO: F.write all aspects of node
+            f.writeInt(count);
+            f.writeInt(height);
+            f.writeLong(left);
+            f.writeLong(right);
         }
     }
 
@@ -61,25 +64,49 @@ public class AVLTree {
     public void insert(int d) throws IOException {
         //insert d into the tree
         //if d is in the tree increment the count field associated with d
-        //TODO:
+        //TODO: Write rotate methods
     }
 
-    private long insert(long root, int d){
+    private long insert(long r, int d) throws IOException{
+        Node temp;
+        if(r == 0){
+            temp = new Node(0,d,0);
+            long addr = f.1
+        }
+        temp = new Node(r);
+        if(d < temp.data){
+            temp.left = insert(temp.left,d);
+        }
+        else if(d > temp.data){
+            temp.right = insert(temp.right,d);
+        }
+        else{
+            temp.count++;
+            temp.writeNode(r);
+            return r;
+        }
 
+        //TODO: Fix first IF statement
     }
-
 
     public int find(int d) throws IOException {
         //if d is in the tree return the value of count associated with d
         //otherwise return 0
-        root = findHelper(root,d);
-        return 0;
-        //TODO: Create Node for root address. Look at BinarySearch on website
-        //TODO: Make private method findHelper.
+        f.seek(0);
+        return findHelper(f.readLong(),d);
     }
-
-    private Long findHelper(Long root, int d){
-
+    private int findHelper(Long r, int d) throws IOException{
+        Node temp = new Node(r);
+        if(temp.data == d){
+            return temp.count;
+        }
+        else if(temp.data < d){
+            findHelper(temp.left,d);
+        }
+        else{
+            findHelper(temp.right,d);
+        }
+        return 0;
     }
 
 
@@ -87,6 +114,18 @@ public class AVLTree {
         //remove one copy of d from the tree
         //if the copy is the last copy remove d from the tree
         //if d is not in the tree the method has no effect
+        f.seek(0);
+        if(find(d) > 0){
+            Long address = findAddress(f.readLong(),d);
+            Node nodeToChange = new Node(address);
+            if(nodeToChange.count > 1){
+                nodeToChange.count--;
+                nodeToChange.writeNode(address);
+            }
+            else {
+                //TODO: Remove node from tree
+            }
+        }
     }
 
     public void removeAll(int d) throws IOException {
@@ -97,5 +136,22 @@ public class AVLTree {
     public void close() {
         //close the random access file
         //before closing update the values of root and free if necessary
+    }
+
+    private int getHeight(){
+
+    }
+
+    private Long findAddress(Long r, int d)throws IOException{
+        Node temp = new Node(r);
+        if(temp.data == d){
+            return r;
+        }
+        else if(temp.data < d){
+            findAddress(temp.left,d);
+        }
+        else{
+            findAddress(temp.right,d);
+        }
     }
 }
